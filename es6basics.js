@@ -79,3 +79,39 @@ const a = [1, 2];
 
 const b = [6, ...a, 8];
 console.log(b);
+
+console.log([] + []); //[] + [] → "" — empty arrays are coerced to empty strings.
+console.log([] + {}); //"[object Object]" — [] is coerced to "", {} is coerced to "[object Object]".
+
+// The for loop runs synchronously: i = 0 → i = 1 → i = 2 → i = 3 → stop.
+//setTimeout just schedules the callback: But setTimeout does not run it immediately — it just stores the callback.
+//Because var is function-scoped, not block-scoped. so, same i value is shared with all the functions and will print 3, 3 times
+for (var i = 0; i < 3; i++) {
+  setTimeout(() => console.log(i), 1000);
+}
+
+//let is block-scoped → each loop iteration has its own i:
+
+//1st iteration: i = 0
+
+//2nd iteration: i = 1
+
+//3rd iteration: i = 2
+
+//Each callback closes over its own copy of i.
+for (let i = 0; i < 3; i++) {
+  setTimeout(() => console.log(i), 1000);
+}
+
+//IIFE is a way to fix the issue with var
+
+for (var i = 0; i < 3; i++) {
+  (function (j) {
+    setTimeout(() => console.log(j), 1000);
+  })(i);
+}
+
+//out of below code is false, because objects and functions are compared by reference, not by value
+const obj1 = { a: 1 };
+const obj2 = { a: 1 };
+console.log(obj1 == obj2);
