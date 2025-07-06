@@ -1,6 +1,6 @@
 // event loop - Event loop is a core concept in nodejs that allows it to handle asynchronous operations- like I/O tasks without blocking on a single thread
 
-// timers -> executes callbacks -> pending callbacks -> idle, prepare (these will be internally handles by nodejs) -> poll(retrive new i/p o/p events and execute  new i/p o/p related callbacks) -> check (which actually executes setImmedeate callback  ) -> close callback
+// timers -> executes callbacks -> pending callbacks -> idle, prepare (these will be internally handled by nodejs) -> poll(retrive new i/p o/p events and execute  new i/p o/p related callbacks) -> check (which actually executes setImmedeate callback  ) -> close callback
 // microtask - which executes immedeatly after the current operation completes ex. process.nextTick, promises, object.obeserve
 // macrotask - macrotask are those tasks that gets executed in the next iteration of event loop ex- setTimeout, setInterval, setImmedeate
 
