@@ -128,3 +128,14 @@ let n = m;
 m.x = 2;
 n.x = 3;
 console.log(m.x);
+
+//A closure is when an inner function remembers variables from its outer function even after the outer function has finished executing.
+function counter() {
+  let count = 0;
+  return function () {
+    return ++count;
+  };
+}
+const c = counter();
+console.log(c()); // 1
+console.log(c()); // 2
