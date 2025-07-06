@@ -115,3 +115,16 @@ for (var i = 0; i < 3; i++) {
 const obj1 = { a: 1 };
 const obj2 = { a: 1 };
 console.log(obj1 == obj2);
+
+//1, 4 are synchronous, promise.then is a microtask, timeout is a macrotask so the output is 1,4, 3,2
+console.log("1");
+setTimeout(() => console.log("2"), 0);
+Promise.resolve().then(() => console.log("3"));
+console.log("4");
+
+//Logs 3. m and n point to the same object in memory.
+let m = { x: 1 };
+let n = m;
+m.x = 2;
+n.x = 3;
+console.log(m.x);
